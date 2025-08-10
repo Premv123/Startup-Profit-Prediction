@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Startup Schemes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            background: url('{{ url_for('static',filename='israel-andrade-YI_9SivVt_s-unsplash.jpg') }}');
+            background-size: cover;
+        }
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #495057;
+        }
+        nav .right {
+            margin-left: auto;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .menu ul li {
+            margin-right: 20px;
+        }
+        .menu ul li a {
+            text-decoration: none;
+            color: #343a40;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .menu ul li a:hover {
+            background-color: #e9ecef;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .dropdown-content a {
+            color: #343a40;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #ccc;
+            transition: background-color 0.3s ease;
+        }
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        .dropdown-content a:hover {
+            background-color: #e9ecef;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .scheme-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .scheme-card-header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .scheme-card-body {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #343a40;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Government Startux
+            <ul>
+                <li><a href="/info">Home</a></li>
+                <li><a href="/government_schemes">Government Schemes</a></li>
+                <li><a href="/home">Profit Prediction</a></li>
+                <li class="right"><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="javascript:history.back()">Back</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Schemes</a>
+                    <div class="dropdown-content">
+                        <a href="#">Startup India</a>
+                        <a href="#">Stand-Up India</a>
+                        <a href="#">MUDRA Yojana</a>
+                        <!-- Add more schemes -->
+                    </div>
+                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <select onchange="location = this.value;">
+                <option value="#">All Schemes</option>
+                <option value="https://www.startupindia.gov.in/">Startup India</option>
+                <option value="https://www.standupmitra.in/">Stand-Up India</option>
+                <option value="https://www.mudra.org.in/">MUDRA Yojana</option>
+                <!-- Add more schemes -->
+            </select>
+        </div>
+        
+        <div class="scheme-card">
+            <div class="scheme-card-header">Startup India</div>
+            <div class="scheme-card-body">
+                <p>Startup India is a flagship initiative of the Government of India, intended to build a strong ecosystem for nurturing innovation and startups in the country.</p>
+                <p><strong>Domains:</strong> Technology, Manufacturing, Agriculture, Healthcare, Education</p>
+                <a href="https://www.startupindia.gov.in/" class="button">Learn More</a>
+            </div>
+        </div>
+
+        <div class="scheme-card">
+            <div class="scheme-card-header">Stand-Up India</div>
+            <div class="scheme-card-body">
+                <p>Stand-Up India scheme aims to promote entrepreneurship amongst women and SC/ST communities by providing loans to start new ventures.</p>
+                <p><strong>Domains:</strong> Various</p>
+                <a href="https://www.standupmitra.in/" class="button">Learn More</a>
+            </div>
+        </div>
+
+        <div class="scheme-card">
+            <div class="scheme-card-header">MUDRA Yojana</div>
+            <div class="scheme-card-body">
+                <p>MUDRA Yojana provides funding to micro-enterprises and startups through various financial institutions to support their growth and development.</p>
+                <p><strong>Domains:</strong> Small Scale Industries</p>
+                <a href="https://www.mudra.org.in/" class="button">Learn More</a>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scheme Name</th>
+                    <th>Domains</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Startup India</td>
+                    <td>Technology, Manufacturing, Agriculture, Healthcare, Education</td>
+                    <td><a href="https://www.startupindia.gov.in/" class="button">Learn More</a></td>
+                </tr>
+                <tr>
+                    <td>Stand-Up India</td>
+                    <td>Various</td>
+                    <td><a href="https://www.standupmitra.in/" class="button">Learn More</a></td>
+                </tr>
+                <tr>
+                    <td>MUDRA Yojana</td>
+                    <td>Small Scale Industries</td>
+                    <td><a href="https://www.mudra.org.in/" class="button">Learn More</a></td>
+                </tr>
+                <!-- Add more schemes -->
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>

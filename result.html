@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <title>Startup Profit Result</title>
+    <body style="background: url('{{ url_for('static', filename='david-schultz-zIq30tCncWk-unsplash.jpg') }}') no-repeat center center fixed; background-size: cover;">
+
+    <style>
+    
+      body {
+          background-color: #f4f6f9;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          color: #212529;
+      }
+      
+      .container {
+          max-width: 100%;
+          padding: 40px 80px;
+          background-color: #ffffff;
+          min-height: 100vh;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      }
+      
+      /* Header */
+      .header {
+          background-color: #003366;
+          color: #ffffff;
+          padding: 30px 80px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 1.2rem;
+          font-weight: 600;
+      }
+      
+      .footer {
+          background-color: #003366;
+          color: #ffffff;
+          text-align: center;
+          padding: 15px 0;
+          font-size: 0.9rem;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+      }
+      
+      .container-heading {
+          text-align: center;
+          font-size: 2rem;
+          font-weight: bold;
+          margin-bottom: 10px;
+      }
+      
+      .description {
+          text-align: center;
+          font-size: 1rem;
+          color: #555;
+          margin-bottom: 40px;
+      }
+
+      .results {
+          font-size: 1rem;
+          line-height: 1.6;
+      }
+      
+      .results h4 {
+          font-weight: 600;
+          margin-top: 20px;
+          border-bottom: 1px solid #ccc;
+          padding-bottom: 5px;
+      }
+      
+      .results p {
+          margin: 10px 0;
+      }
+    
+      .alert {
+          background-color: #004085;
+          color: #ffffff;
+          padding: 20px;
+          border-radius: 4px;
+          margin: 30px 0;
+          font-weight: 500;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .charts {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 40px;
+      }
+      
+      .chart {
+          flex: 1;
+          margin: 0 20px;
+          padding: 20px;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          background-color: #fafafa;
+      }
+   
+      p, li {
+          font-size: 1rem;
+          color: #ffffff;
+      }
+      
+      strong {
+          font-weight: 600;
+      }
+      
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="container">
+        <h2 class="container-heading">Result - Startup Business Profit Prediction</h2>
+        <div class="description">
+            <!-- In your base.html or header template -->
+<header class="header">
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fas fa-chart-bar"></i>     
+        <i class="fas fa-arrow-trend-up"></i>         
+      </div>
+      <div class="logo-text">
+        <div class="logo-title">ProfiTech Analytics</div>
+        <div class="logo-subtitle">Advanced Business Intelligence</div>
+      </div>
+    </div>
+    
+    <div class="header-content">
+      <h1>Startup Profit Analysis Report</h1>
+      <div class="date">Report Date: {{ current_date }}</div>
+      <div class="reference">Reference No.: PR-{{ reference_number }}</div>
+    </div>
+  </header>
+  
+            <p>A Machine Learning Web App, Built with Flask, Deployed using Heroku, By Students of Sinhgad College of Engineering Pune</p>
+        </div>
+        <!-- Result -->
+        <div class="results">
+            <div class="alert alert-success" role="alert">{{ prediction_text }}</div>
+            
+            <!-- Display Bar Chart -->
+            <h4 class="mt-3 text-center">Expense Distribution (Bar Chart)</h4>
+            <img src="{{ url_for('bar_plot', r_d_expenses=r_d_expenses, administration_expenses=administration_expenses, marketing_expenses=marketing_expenses, state=state) }}" alt="Bar Graph" class="img-fluid mx-auto d-block">
+    
+            <!-- Display Pie Chart -->
+            <h4 class="mt-3 text-center">Expense Distribution (Pie Chart)</h4>
+            <img src="{{ url_for('pie_plot', r_d_expenses=r_d_expenses, administration_expenses=administration_expenses, marketing_expenses=marketing_expenses, state=state) }}" alt="Pie Chart" class="img-fluid mx-auto d-block">
+            
+            <!-- In your prediction_results.html -->
+<div class="report-card">
+    <div class="report-header">
+      <div class="report-title">
+        <i class="file-icon"></i>
+        <h2>Formal Profitability Analysis Report</h2>
+      </div>
+      <p class="report-date">Generated on {{current_date}} • Reference: PR-{{reference_number}}</p>
+    </div>
+    
+    <div class="report-content">
+      <div class="summary-box">
+        <div class="summary-icon">
+          <i class="award-icon"></i>
+        </div>
+        <div class="summary-text">
+          <h3>Profit Projection Summary</h3>
+          <p>Based on statistical modeling and machine learning algorithms</p>
+        </div>
+        <div class="summary-amount">
+          <span>${{predicted_profit}}</span>
+          <div>Projected Annual Profit</div>
+        </div>
+      </div>
+      
+      <!-- Rest of the report sections -->
+    </div>
+  </div>
+  
+
+        </div>
+    </div>
+    

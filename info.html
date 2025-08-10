@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            background: url('{{ url_for('static',filename='mario-gogh-VBLHICVh-lI-unsplash.jpg') }}');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #495057;
+        }
+        nav .right {
+            margin-left: auto;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .startup-info {
+            margin-bottom: 40px;
+        }
+        .startup-info h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #343a40;
+        }
+        .startup-info p {
+            margin-top: 5px;
+            color: #6c757d;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #343a40;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #495057;
+        }
+        .section-title {
+            font-size: 28px;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        @media (min-width: 768px) {
+            .container {
+                display: flex;
+                justify-content: space-between;
+            } .startup-info {
+                width: 45%;
+            }
+        } 
+        .qa-container {
+            background-color: #f0f8ff;
+            border: 2px solid #007bff;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 700px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .qa-text {
+            font-size: 1.4rem;
+            color: #333;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .animate {
+            opacity: 1;
+        }
+        
+        .fade-out {
+            opacity: 0;
+            
+       
+        }
+        <!-- Floating Chatbot Button & Panel -->
+        #chatbot-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        #chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #343a40;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+
+        #chatbot-panel {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 300px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 999;
+        }
+
+        #chatbot-messages {
+            height: 300px;
+            padding: 10px;
+            overflow-y: auto;
+            font-size: 14px;
+        }
+
+        .chat-input {
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            display: flex;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .chat-input button {
+            padding: 8px 12px;
+            border: none;
+            background: #343a40;
+            color: white;
+            border-radius: 5px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        
+        .bot, .user {
+            margin: 8px 0;
+            padding: 6px 10px;
+            border-radius: 8px;
+            max-width: 90%;
+        }
+
+        .bot {
+            background-color: #f1f1f1;
+            text-align: left;
+        }
+
+        .user {
+            background-color: #007bff;
+            color: white;
+            margin-left: auto;
+            text-align: right;
+            
+        }
+    </style>
+
+    <button id="chatbot-toggle">💬</button>
+
+<div id="chatbot-panel" style="display: none; flex-direction: column; border: 1px solid #ccc; width: 300px; position: fixed; bottom: 20px; right: 20px; background: white; box-shadow: 0px 0px 10px rgba(0,0,0,0.2); padding: 10px;">
+    <div id="chatbot-messages" style="height: 200px; overflow-y: auto; margin-bottom: 10px;"></div>
+    <div id="chatbot-input" style="display: flex;">
+        <input type="text" id="chatbot-text" placeholder="Ask me anything..." style="flex: 1; padding: 5px;" />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    const chatbotToggle = document.getElementById("chatbot-toggle");
+    const chatbotPanel = document.getElementById("chatbot-panel");
+    const chatbotText = document.getElementById("chatbot-text");
+    const chatbotMessages = document.getElementById("chatbot-messages");
+
+    chatbotToggle.addEventListener('click', () => {
+        chatbotPanel.style.display = chatbotPanel.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    chatbotText.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
+
+    function appendMessage(sender, message) {
+        const messageElement = document.createElement("div");
+        messageElement.textContent = `${sender === 'user' ? 'You' : 'Bot'}: ${message}`;
+        messageElement.style.marginBottom = "5px";
+        chatbotMessages.appendChild(messageElement);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function sendMessage() {
+        const userInput = chatbotText.value.trim();
+        if (!userInput) return;
+
+        appendMessage('user', userInput);
+        chatbotText.value = '';
+
+        let botResponse = "I'm still learning. Try asking about startup schemes!";
+        const input = userInput.toLowerCase();
+
+        if (input.includes('funding')) {
+            botResponse = "You can explore government schemes for funding.";
+        } else if (input.includes('problems')) {
+            botResponse = "Talk to potential customers, look for workarounds, and observe real behavior.";
+        } else if (input.includes('startup')) {
+            botResponse = "Startups are businesses that aim to solve problems with innovation.";
+        } else if (input.includes('scheme')) {
+            botResponse = "You can check the 'Government Schemes' section for more information.";
+        }
+
+        setTimeout(() => {
+            appendMessage('bot', botResponse);
+        }, 500);
+    }
+</script>
+
+    </script>
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Startup Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="/info">Home</a></li>
+                <li><a href="/government_schemes">Government Schemes</a></li>
+                <li><a href="/home">Profit Prediction</a></li>
+                <li><a href="/home">Profit Prediction</a></li>
+                <li class="right"><a href="/Help_desk">Help /Help Desk</a></li>
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="javascript:history.back()">Back</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br>
+    <div class="qa-container">
+        <div id="qa-box" class="qa-text animate">
+            <!-- Question & Answer will go here -->
+        </div>
+    </div>
+    
+
+    <script>
+       
+            const qaPairs = [
+                ["What is a startup?", "A startup is a young company focused on solving a problem with an innovative product or service."],
+                ["Why are startups important?", "They drive innovation, create jobs, and stimulate the economy."],
+                ["What challenges do startups face?", "Funding, competition, scaling, and hiring the right talent."],
+                ["How do startups get funded?", "Through investors, venture capital, loans, and government schemes."],
+                ["What is the startup ecosystem?", "It's a network of entrepreneurs, investors, mentors, and support organizations."],
+                ["Why are startups booming in India?", "India has a huge market, tech talent, and supportive government policies."],
+                ["How can I start a startup?", "Start with a problem, build a solution, test it, and seek mentorship or funding."]
+            ];
+        
+            let currentIndex = 0;
+        
+            function showNextQA() {
+                const qaBox = document.getElementById("qa-box");
+                qaBox.classList.add("fade-out");
+        
+                setTimeout(() => {
+                    const [question, answer] = qaPairs[currentIndex];
+                    qaBox.innerHTML = `<strong>Q:</strong> ${question}<br><strong>A:</strong> ${answer}`;
+                    qaBox.classList.remove("fade-out");
+        
+                    currentIndex = (currentIndex + 1) % qaPairs.length;
+                }, 500);
+            }
+        
+            setInterval(showNextQA, 5000); // Every 5 seconds
+            window.onload = showNextQA; // Show the first Q&A on page load
+        </script>
+        
+
+    <div class="container">
+        <h2 class="section-title">Explore Government Schemes</h2>
+        <div class="card animate__animated animate__fadeInUp">
+            <div class="card-header">Government Schemes</div>
+            <div class="card-body">
+                <p>Discover funding and support opportunities for startups through government schemes.</p>
+                <button class="button" onclick="government_schemes()">Explore</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
+    <script>
+        // JavaScript function to redirect to government_schemes.html
+        function government_schemes() {
+            console.log("Button clicked");  // Add this line
+            window.location.href = "/government_schemes";
+        }
+        
+    </script>
+</body>
+</html>

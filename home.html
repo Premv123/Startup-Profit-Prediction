@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Startup Form</title>
+    <style>
+        body {
+            background: url('{{ url_for('static',filename='background.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+        .form-group input, .form-group select {
+            background-color: #f8f9fa;
+        }
+        .predict-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: auto;
+        }
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;a
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>Startup Profit Prediction</header>
+    <div class="container">
+        <h3 class="text-center">Enter Startup Details</h3>
+        <form action="{{ url_for('predict')}}" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" name="company_name" placeholder="Company Name *" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="owner_name" placeholder="Owner's Name *" required>
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="startup_field" id="startup_field" required>
+                    <option selected disabled>Select Startup Field *</option>
+                    <option>AI & ML</option>
+                    <option>Fintech</option>
+                    <option>Lifesciences, Healthcare & Pharma</option>
+                    <option>e-Commerce & Delivery Services</option>
+                    <option>OTT Platforms & Online Gaming</option>
+                    <option>EdTech</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group" id="otherField" style="display: none;">
+                <input type="text" class="form-control" name="other_startup_field" placeholder="Specify Other Field">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="r_d_expenses" placeholder="R&D Expenses *" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="marketing_expenses" placeholder="Marketing Expenses *" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="administration_expenses" placeholder="Administration Expenses *" required>
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="state" required>
+                    <option selected disabled>Select State *</option>
+                    <option>New York</option>
+                    <option>California</option>
+                    <option>Florida</option>
+                </select>
+            </div>
+            <button type="submit" class="predict-btn">Predict</button>
+        </form>
+    </div>
+    <div class="footer">&copy; 2024 Startup Profit Prediction</div>
+    <script>
+        document.getElementById('startup_field').addEventListener('change', function() {
+            if (this.value === 'other') {
+                document.getElementById('otherField').style.display = 'block';
+            } else {
+                document.getElementById('otherField').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
