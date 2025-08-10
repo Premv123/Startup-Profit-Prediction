@@ -1,0 +1,11 @@
+{
+    "data_columns": [
+      "r_d_expenses",
+      "administration_expenses",
+      "marketing_expenses",
+      "state_California",
+      "state_Florida",
+      "state_New York"
+    ]
+  }
+  
